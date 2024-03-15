@@ -2,17 +2,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 header {
-    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
 }
 
 main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: calc(100vh - 110px)
 }
 
 .container {
@@ -39,17 +43,27 @@ main {
     background-color: aqua;
 }
 
+.left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header img {
+    height: 60px;
+}
+
 button {
     background-color: aquamarine;
     border: 0px;
     border-radius: 15px;
-    padding: 15px;
+    padding: 13px;
     font-size: large;
-    
 }
 
-.pippo {
-    display: flex;
-    justify-content: center;
+body {
+    background-image: url(https://m.media-amazon.com/images/I/81eoHeYhdAL._AC_SL1500_.jpg);
+    background-size: cover;
+    background-position: 100vw;
 }
 
