@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <option value="1">Difficoltà 1</option>
         <option value="2">Difficoltà 2</option>
         <option value="3">Difficoltà 3</option>
-        `;
+    `;
     
     // Aggiungi un gestore di eventi al bottone Play
     playButton.addEventListener('click', function () {
@@ -36,26 +36,22 @@ document.addEventListener('DOMContentLoaded', function () {
         let gridSize, gridColumns, gridRows;
 
         // Imposta le dimensioni della griglia in base alla difficoltà selezionata
-        switch (selectedDifficulty) {
-            case 1:
-                gridSize = 100;
-                gridColumns = 10;
-                gridRows = 10;
-                break;
-            case 2:
-                gridSize = 81;
-                gridColumns = 9;
-                gridRows = 9;
-                break;
-            case 3:
-                gridSize = 49;
-                gridColumns = 7;
-                gridRows = 7;
-                break;
-            default:
-                gridSize = 100;
-                gridColumns = 10;
-                gridRows = 10;
+        if (selectedDifficulty === 1) {
+            gridSize = 100;
+            gridColumns = 10;
+            gridRows = 10;
+        } else if (selectedDifficulty === 2) {
+            gridSize = 81;
+            gridColumns = 9;
+            gridRows = 9;
+        } else if (selectedDifficulty === 3) {
+            gridSize = 49;
+            gridColumns = 7;
+            gridRows = 7;
+        } else {
+            gridSize = 100;
+            gridColumns = 10;
+            gridRows = 10;
         }
 
         // Genera la griglia
@@ -81,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Aggiungi la select prima del bottone di generazione
     playButton.parentNode.insertBefore(selectDifficulty, playButton);
 });
+
 
 
 
