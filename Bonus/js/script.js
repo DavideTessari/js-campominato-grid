@@ -12,3 +12,78 @@
 
 // Consigli del giorno:  :party_wizard:
 // Scriviamo prima cosa vogliamo fare passo passo in italiano, dividiamo il lavoro in micro problemi.
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const playButton = document.getElementById('playButton');
+    const gridContainer = document.getElementById('grid-container');
+    const selectDifficulty = document.createElement('select');
+
+    // Aggiungi le opzioni di difficoltà alla select
+    selectDifficulty.innerHTML = `
+        <option value="1">Difficoltà 1</option>
+        <option value="2">Difficoltà 2</option>
+        <option value="3">Difficoltà 3</option>
+        `;
+    
+    // Aggiungi un gestore di eventi al bottone Play
+    playButton.addEventListener('click', function () {
+        // Rimuovi le celle esistenti dal contenitore della griglia
+        gridContainer.innerHTML = '';
+
+        // Ottieni la difficoltà selezionata dalla select
+        const selectedDifficulty = parseInt(selectDifficulty.value);
+        let gridSize, gridColumns, gridRows;
+
+        // Imposta le dimensioni della griglia in base alla difficoltà selezionata
+        switch (selectedDifficulty) {
+            case 1:
+                gridSize = 100;
+                gridColumns = 10;
+                gridRows = 10;
+                break;
+            case 2:
+                gridSize = 81;
+                gridColumns = 9;
+                gridRows = 9;
+                break;
+            case 3:
+                gridSize = 49;
+                gridColumns = 7;
+                gridRows = 7;
+                break;
+            default:
+                gridSize = 100;
+                gridColumns = 10;
+                gridRows = 10;
+        }
+
+        // Genera la griglia
+        for (let i = 1; i <= gridSize; i++) {
+            const cell = document.createElement('div');
+            cell.innerHTML = i;
+            cell.classList.add('cell');
+            gridContainer.appendChild(cell);
+
+            cell.addEventListener('click', function () {
+                this.classList.add('clicked');
+                alert('Cella cliccata: ' + cell.innerHTML);
+            });
+        }
+
+        // Imposta lo stile della griglia in base alle dimensioni calcolate
+        gridContainer.style.gridTemplateColumns = `repeat(${gridColumns}, 1fr)`;
+        gridContainer.style.gridTemplateRows = `repeat(${gridRows}, 1fr)`;
+
+        playButton.disabled = true;
+    });
+
+    // Aggiungi la select prima del bottone di generazione
+    playButton.parentNode.insertBefore(selectDifficulty, playButton);
+});
+
+
+
+
+
+
